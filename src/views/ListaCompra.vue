@@ -37,7 +37,7 @@
           <button
             id="agregar"
             class="btn btn-primary form-control"
-            v-bind:disabled="articulo.length === 0"
+            v-bind:disabled="permitir"
             v-on:click.prevent="Agregar"
           >Añadir</button>
         </div>
@@ -45,7 +45,7 @@
     </form>
 
     <div id="listacompra" class="listacompra rounded">
-      <template v-if="listado.length === 0">
+      <template v-if="longitudLista === 0">
         <div class="alert alert-danger">
           <i class="material-icons align-middle">list</i> No hay Articulos que comprar
         </div>
@@ -76,10 +76,21 @@ export default {
       titulo: "Carrito de la Compra con Vue.js!!",
       articulo: "",
       cantidad: 0,
+      permitir: false,
       prioridad: "Baja",
       //listado: [],
       contenido: ""
     };
+  },
+  watch: {
+    listado: function(OldValue, NewValue) {
+      this.AgregarLocalStorage();
+      console.log("Listado Modificado ...");
+    },
+    listadoHechas() {
+      this.AgregarLocalStorage();
+      console.log("ListadoHechas Modificado ...");
+    }
   },
   methods: {
     Agregar() {
@@ -109,19 +120,23 @@ export default {
       item.estado = !item.estado;
     }, */
     ...mapMutations(["CambiarColor"]),
-    ...mapActions(["Eliminar"])
+    ...mapActions(["Eliminar", "AgregarLocalStorage", "LeerLocalStorage"])
   },
   computed: {
     ...mapState(["listado"]),
-    ...mapGetters(["listadoHechas"]),
+    ...mapGetters(["listadoHechas", "longitudLista", "longtiudHechas"]),
     ComprasHechas() {
       //return this.listado.filter(elemento => elemento.estado);
       return this.listadoHechas;
     },
     Porcentaje() {
-      return ((this.ComprasHechas.length * 100) / this.listado.length).toFixed(
-        2
-      );
+      let porcentaje = 0;
+      if (this.longitudLista != 0) {
+        porcentaje = ((this.longtiudHechas * 100) / this.longitudLista).toFixed(
+          2
+        );
+      }
+      return porcentaje;
     },
     PorcentajeTantoPorCien() {
       return this.Porcentaje.toString() + "%";

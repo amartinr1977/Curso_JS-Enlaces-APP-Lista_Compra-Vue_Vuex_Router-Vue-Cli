@@ -23,7 +23,17 @@
     <pre>{{ $data }}</pre>
   </div>
 </template>
-
+<script>
+import { mapActions } from "vuex";
+export default {
+  created() {
+    this.LeerLocalStorage();
+  },
+  methods: {
+    ...mapActions(["LeerLocalStorage"])
+  }
+};
+</script>
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

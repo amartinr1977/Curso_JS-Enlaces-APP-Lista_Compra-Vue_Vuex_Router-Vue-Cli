@@ -39,19 +39,24 @@ export default {
     console.log(this.listadoHechas);
   },
   watch: {
-    listadoHechas() {
+    longtiudHechas(lActual, lAnterior) {
       //alert("Has eliminado un elemento ...");
       this.$swal({
         type: "question",
         title: "Oops...",
-        text: "Acabas e eliminar un elemento",
+        text:
+          'Tu carrito ha pasado de terner "' +
+          lAnterior +
+          '" productos, a tener ahora "' +
+          lActual +
+          '" productos',
         footer: "<a href>Para más información</a>"
       });
     }
   },
   computed: {
     ...mapState(["listado"]),
-    ...mapGetters(["listadoHechas"]),
+    ...mapGetters(["listadoHechas", "longtiudHechas"]),
     /* ArticulosCompradosYa() {
             return this.listado.filter((item) => item.estado)
         }, */

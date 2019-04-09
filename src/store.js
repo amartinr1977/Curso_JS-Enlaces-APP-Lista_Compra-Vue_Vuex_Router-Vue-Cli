@@ -10,6 +10,14 @@ export default new Vuex.Store({
   getters: {
     listadoHechas(state) {
       return state.listado.filter((item) => item.estado)
+    },
+    longitudLista(state) {
+      let longitud = state.listado.length
+      return longitud === null ? 0 : longitud
+    },
+    longtiudHechas(state) {
+      let longitud = state.listado.filter((item) => item.estado).length
+      return longitud === null ? 0 : longitud
     }
   },
   mutations: {
@@ -23,6 +31,15 @@ export default new Vuex.Store({
       //item.estado = !item.estado;
       let indice = state.listado.indexOf(item)
       state.listado[indice].estado = !state.listado[indice].estado
+    },
+    AgregarLocalStorage(state) {
+      localStorage.setItem('listado', JSON.stringify(state.listado))
+    },
+    LeerLocalStorage(state) {
+      if ("listado" in localStorage)
+        state.listado = JSON.parse(localStorage.getItem('listado'))
+      else
+        state.listado = []
     }
   },
   actions: {
@@ -30,6 +47,18 @@ export default new Vuex.Store({
       context.commit('Eliminar', {
         item
       })
+    },
+    AgregarLocalStorage({
+      commit,
+      state
+    }) {
+      commit('AgregarLocalStorage')
+    },
+    LeerLocalStorage({
+      commit,
+      state
+    }) {
+      commit('LeerLocalStorage')
     }
 
   }
