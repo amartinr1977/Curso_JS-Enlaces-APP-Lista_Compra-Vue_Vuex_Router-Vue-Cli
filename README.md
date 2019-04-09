@@ -5,6 +5,8 @@ En diferentes archivos se guarda cada componente que se renderizará en **router
 
 ## Aspecto de la aplicación
 
+La APP irá almacenando en un Array que se almacena en el LocalStorage del equipo los valores introducidos en el formulario referentes a: **articulo a comprar**, **cantidad**, **prioridad**. Además se guardará un **estado** de la compra de ese artículo y un identificador unívoco generado con la función **random** de **Math**. Todo ello se puede comprobar observando el código.
+
 ![Portada de la app](https://github.com/amartinr1977/Curso_JS-Enlaces-APP-Lista_Compra-Vue_Vuex_Router-Vue-Cli/blob/master/portada-app.png)
 
 ## Descargar la aplicación:
