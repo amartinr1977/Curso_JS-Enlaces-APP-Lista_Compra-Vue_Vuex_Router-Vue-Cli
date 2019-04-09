@@ -1,0 +1,48 @@
+.minav {
+    margin: 4px;
+    padding: 4px;
+    background-color: aquamarine
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.activo div {
+    background-color: antiquewhite;
+    color: orange;
+    font-size: 1.2em;
+    font-weight: bold
+}
+
+
+.iconosclick {
+    font-size: 1.5em;
+    cursor: pointer
+}
+
+.listacompra {
+    padding: 15px;
+    background-color: aquamarine
+}
+
+.iconos {
+    color: rgb(255, 240, 0);
+}
+
+.mired {
+    color: red;
+}
+
+.opacidad {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    /* For IE8 and earlier */
+}
+
+.no-seleccionable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

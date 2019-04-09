@@ -1,16 +1,32 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="container miestilo" id="app">
+    <div class="row justify-content-center mt-5">
+      <div class="col-3 text-center">
+        <router-link to="/" active-class="activo" exact>
+          <div class="minav rounded w-100">Inicio</div>
+        </router-link>
+      </div>
+      <div class="col-3 text-center">
+        <router-link to="/articulos-compra" active-class="activo">
+          <div class="minav rounded w-100">Cesta</div>
+        </router-link>
+      </div>
+      <div class="col-3 text-center">
+        <router-link to="/acercade" active-class="activo">
+          <div class="minav rounded w-100">AcercaDe</div>
+        </router-link>
+      </div>
     </div>
-    <router-view/>
+    <div class="row">
+      <router-view></router-view>
+    </div>
+    <pre>{{ $data }}</pre>
   </div>
 </template>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
